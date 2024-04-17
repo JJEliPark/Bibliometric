@@ -1,0 +1,33 @@
+conference, query
+AAAI Artificial Intelligence, SRCTITLE (aaai AND artificial AND intelligence AND proceedings) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+ACL Natural Language Processing, SRCTITLE ( proceedings AND of AND the AND annual AND meeting AND of AND the AND association AND for AND computational AND linguistics ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+CHI Human-Computer Interaction, SRCTITLE ( conference AND on AND human AND factors AND in AND computing AND systems AND proceedings ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+CIKM Knowledge Management, SRCTITLE ( international AND conference AND on AND information AND knowledge AND management AND proceedings ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+CVPR Computer Vision, SRCTITLE ( proceedings AND computer AND society AND conference AND on AND computer AND vision AND pattern AND recognition ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+FOCS Theory, SRCTITLE ( proceedings AND annual AND ieee AND symposium AND on AND foundations AND of AND computer AND science ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+FSE Software Engineering, SRCTITLE ( proceedings AND foundations AND of AND software AND engineering ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+ICCV Computer Vision, SRCTITLE ( proceedings AND international AND conference AND on AND computer AND vision ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+ICML Machine Learning, SRCTITLE ( proceedings AND international AND conference AND on AND machine AND learning AND NOT cybernetics ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+ICSE Software Engineering, SRCTITLE ( proceedings AND - AND international AND conference AND on AND software AND engineering ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+IJCAI Artificial Intelligence, SRCTITLE ( ijcai AND international AND conference AND on AND artificial AND intelligence ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+INFOCOM Networking, SRCTITLE ( proceedings AND - AND ieee AND infocom ) AND PUBYEAR > 1995 AND PUBYEAR < 2024 
+ISCA Architecture, SRCTITLE ( proceedings AND - AND international AND symposium AND on AND computer AND architecture ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+KDD Data Mining, SRCTITLE ( proceedings AND of AND the AND acm AND sigkdd AND international AND conference AND on AND knowledge AND discovery AND data AND mining ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+MOBICOM Mobile, SRCTITLE ( mobicom AND proceedings AND mobile ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+NeurIPS Machine Learning, SRCTITLE ( advances AND in AND neural AND information AND processing AND systems ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+NSDI Networking, SRCTITLE ( proceedings AND on AND networked AND systems AND design AND implementation ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+OSDI Operating Systems, SRCTITLE (  operating AND systems AND design AND implementation ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+PLDI Programming Languages, SRCTITLE ( proceedings AND programming AND language AND design AND implementation ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+PODS Databases, SRCTITLE ( proceedings AND principles AND of AND database AND systems ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+S&P Security and Privacy, SRCTITLE ( proceedings AND ieee AND symposium AND on AND security AND privacy ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+SIGCOMM Networking, SRCTITLE ( proceedings AND of AND the AND acm AND sigcomm ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+SIGGRAPH Graphics, SRCTITLE ( acm AND transactions AND on AND graphics ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+SIGIR Information Retrieval, SRCTITLE ( proceedings AND research AND development AND in AND information AND retrieval ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+SIGMETRICS Performance, SRCTITLE ( proceedings AND acm AND measurement AND analysis AND of AND computing AND systems ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+SIGMOD Databases, SRCTITLE ( proceedings AND acm AND sigmod AND international AND conference AND on AND management AND of AND data ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+SODA Theory, SRCTITLE ( proceedings AND of AND the AND annual AND acm-siam AND symposium AND on AND discrete AND algorithms ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+SOSP Operating Systems, SRCTITLE ( proceedings AND operating AND systems AND principles ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+STOC Theory, SRCTITLE ( proceedings AND of AND the AND annual AND acm AND symposium AND on AND theory AND of AND computing ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+UIST User Interface, SRCTITLE ( proceedings AND user AND interface AND software AND technology ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+VLDB Databases, SRCTITLE ( proceedings AND ( very AND large AND databases ) OR ( vldb ) ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
+WWW World Wide Web, SRCTITLE ( proceedings AND of AND the AND ( ( world AND wide AND web ) OR ( www ) ) ) AND PUBYEAR > 1995 AND PUBYEAR < 2024
