@@ -14,10 +14,10 @@
 ### 설치
 
 1. 이 저장소를 클론하거나 다운로드합니다:
-git clone [https://github.com/JJEliPark/Bibliometric.git]
+```git clone https://github.com/JJEliPark/Bibliometric.git```
 
 2. 필요한 라이브러리를 설치합니다:
-pip install -r requirements.txt
+```pip install -r requirements.txt```
 
 
 ## 사용 방법
@@ -26,14 +26,14 @@ pip install -r requirements.txt
 
 1. Scopus API 키를 확보하세요. (Scopus 등록 및 API 키 발급 방법은 [Scopus API Documentation](https://www.scopus.com) 참조)
 2. `scopus_data.py` 스크립트를 실행하여 데이터를 수집합니다:
-python scopus_data.py
+```python scopus_data.py```
 
 
 ### USPTO 데이터 수집
 
 1. USPTO의 데이터 접근 권한을 확인하세요. (USPTO 데이터 사용 방법은 [USPTO Data Access](https://www.uspto.gov) 참조)
 2. `uspto_data.py` 스크립트를 실행하여 데이터를 수집합니다:
-python uspto_data.py
+```python uspto_data.py```
 
 ## 기여하기
 
@@ -45,7 +45,7 @@ python uspto_data.py
 
 ## 저자
 
-- [여러분의 이름 및 연락처]
+- [pkmon1d@snu.ac.kr]
 
 ## 참고 자료
 
