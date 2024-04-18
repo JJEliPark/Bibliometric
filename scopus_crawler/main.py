@@ -3,26 +3,34 @@ from sub.scopus_load_all import ScopusCrawlerAll
 from sub.scopus_load_all_madequery import ScopusCrawlerQuery
 from sub.scopus_load import ScopusCrawlerBest
 from sub.best_paper_awards_crawl import BestPaperAwardsCrawler
-
+from pybliometrics.scopus.utils import config
+import argparse
 
 
 def main():
+    
+    api_key = config['Authentication']['APIKey']
+    if len(api_key) == 0 :
+        print("There's no default key for SCOPUS API")
+        api_key = input("Please enter your API key: ")
+
+
     # 스크립트 순서대로 실행
     awards_crawler = BestPaperAwardsCrawler()
     awards_crawler.run()
     print("*******best_paper_awards_crawl.csv Created.")
 
-    awards_scopus_crawler = ScopusCrawlerBest()
+    awards_scopus_crawler = ScopusCrawlerBest(api_key=api_key)
     awards_scopus_crawler.search_papers()
     print("*******best_paper_awards_scopus.csv Created.")
 
     # ScopusQueryExecutor 클래스 인스턴스화 및 실행
-    query_executor = ScopusCrawlerQuery()
+    query_executor = ScopusCrawlerQuery(api_key=api_key)
     query_executor.run_queries()
     print("*******best_scopus_predefined.csv Created.")
 
     # ScopusPaperSearch 클래스 인스턴스화 및 실행
-    all_searcher = ScopusCrawlerAll()
+    all_searcher = ScopusCrawlerAll(api_key=api_key)
     all_searcher.run_search()
     print("*******best_scopus_whole.csv Created.")
 
