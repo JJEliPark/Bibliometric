@@ -1,6 +1,6 @@
 #UN Vote Data : 300MB
 data/
 patent_crawler/sub_data/
-sub_data/best_paper_awards_scopus.csv
-sub_data/best_scopus_predefined.csv
-sub_data/best_scopus_whole.csv
+scopus_crawler/sub_data/best_paper_awards_scopus.csv
+socpus_crawler/sub_data/best_scopus_predefined.csv
+socpus_crawler/sub_data/best_scopus_whole.csv
