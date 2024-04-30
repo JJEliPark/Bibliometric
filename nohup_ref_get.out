@@ -1,8 +1,0 @@
-nohup: ignoring input
-/home/pkmon1d/miniconda3/lib/python3.11/site-packages/pandas/io/parsers/c_parser_wrapper.py:365: DeprecationWarning: np.find_common_type is deprecated.  Please use `np.result_type` or `np.promote_types`.
-See https://numpy.org/devdocs/release/1.25.0-notes.html and the docs for more information.  (Deprecated NumPy 1.25)
-  common_type = np.find_common_type(
-sys:1: DtypeWarning: Columns (2,19,21,23,24,25) have mixed types.Specify dtype option on import or set low_memory=False.
-/home/pkmon1d/miniconda3/lib/python3.11/site-packages/pandas/core/dtypes/cast.py:1846: DeprecationWarning: np.find_common_type is deprecated.  Please use `np.result_type` or `np.promote_types`.
-See https://numpy.org/devdocs/release/1.25.0-notes.html and the docs for more information.  (Deprecated NumPy 1.25)
-  return np.find_common_type(types, [])  # type: ignore[arg-type]
