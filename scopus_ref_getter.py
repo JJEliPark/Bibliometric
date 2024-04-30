@@ -1,7 +1,6 @@
 import pandas as pd
+import numpy as np
 from pybliometrics.scopus import ScopusSearch
-
-
 
 pd.set_option('display.max_columns', None)
 data = pd.read_csv("./data/ai_research_papers.csv")
@@ -11,10 +10,16 @@ origin_eids_set = set(origin_eids)
 columns = ['eid', 'eid_citedby_ai', 'citedby_count_ai', 'eid_citedby_etc', 'citedby_count_etc']
 df = pd.DataFrame(columns=columns)
 
-for e in origin_eids :
+i = 0
+
+for row in data.iterrows() :
+    i+=1
+    e = row[1][0]
     try :
+        if row[1]['citedby_count'] == 0 :
+            continue
         q = "REF(" + e + ")"
-        s = ScopusSearch(q, verbose=False)
+        s = ScopusSearch(q, verbose=True)
         ref_by = set(s.get_eids())
         in_origin = list(origin_eids_set.intersection(ref_by))
         in_origin_n = len(in_origin)
@@ -25,7 +30,7 @@ for e in origin_eids :
         not_origin = ';'.join(not_origin)
         new_row = [e, in_origin, in_origin_n, not_origin, not_origin_n]
         df = df.append(pd.Series(new_row, index=df.columns), ignore_index=True)
-        print(e, "Done.")
+        print("# :", i, "Eid : ", e, "Done.")
     except :
         print(e, "Failed")
         break
