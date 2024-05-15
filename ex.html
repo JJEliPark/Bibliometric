@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 600px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#dd4b39", "id": "United States", "label": "United States", "shape": "dot", "title": "# of papers: 123961.0"}, {"color": "#dd4b39", "id": "China", "label": "China", "shape": "dot", "title": "# of papers: 47930.0"}, {"color": "#dd4b39", "id": "United Kingdom", "label": "United Kingdom", "shape": "dot", "title": "# of papers: 20490.0"}, {"color": "#dd4b39", "id": "Germany", "label": "Germany", "shape": "dot", "title": "# of papers: 20214.0"}, {"color": "#dd4b39", "id": "Canada", "label": "Canada", "shape": "dot", "title": "# of papers: 14783.0"}, {"color": "#dd4b39", "id": "France", "label": "France", "shape": "dot", "title": "# of papers: 12512.0"}, {"color": "#dd4b39", "id": "Australia", "label": "Australia", "shape": "dot", "title": "# of papers: 9490.0"}, {"color": "#dd4b39", "id": "Japan", "label": "Japan", "shape": "dot", "title": "# of papers: 8824.0"}, {"color": "#dd4b39", "id": "Hong Kong", "label": "Hong Kong", "shape": "dot", "title": "# of papers: 8260.0"}, {"color": "#dd4b39", "id": "Israel", "label": "Israel", "shape": "dot", "title": "# of papers: 7329.0"}, {"color": "#dd4b39", "id": "Switzerland", "label": "Switzerland", "shape": "dot", "title": "# of papers: 7184.0"}, {"color": "#dd4b39", "id": "Italy", "label": "Italy", "shape": "dot", "title": "# of papers: 7057.0"}, {"color": "#dd4b39", "id": "Singapore", "label": "Singapore", "shape": "dot", "title": "# of papers: 6658.0"}, {"color": "#dd4b39", "id": "South Korea", "label": "South Korea", "shape": "dot", "title": "# of papers: 6194.0"}, {"color": "#dd4b39", "id": "India", "label": "India", "shape": "dot", "title": "# of papers: 5864.0"}, {"color": "#dd4b39", "id": "Netherlands", "label": "Netherlands", "shape": "dot", "title": "# of papers: 5305.0"}, {"color": "#dd4b39", "id": "Spain", "label": "Spain", "shape": "dot", "title": "# of papers: 4037.0"}, {"color": "#dd4b39", "id": "Austria", "label": "Austria", "shape": "dot", "title": "# of papers: 3477.0"}, {"color": "#dd4b39", "id": "Sweden", "label": "Sweden", "shape": "dot", "title": "# of papers: 3234.0"}, {"color": "#dd4b39", "id": "Brazil", "label": "Brazil", "shape": "dot", "title": "# of papers: 2833.0"}, {"color": "#dd4b39", "id": "Denmark", "label": "Denmark", "shape": "dot", "title": "# of papers: 2735.0"}, {"color": "#dd4b39", "id": "Belgium", "label": "Belgium", "shape": "dot", "title": "# of papers: 2455.0"}, {"color": "#dd4b39", "id": "Finland", "label": "Finland", "shape": "dot", "title": "# of papers: 2316.0"}, {"color": "#dd4b39", "id": "Taiwan", "label": "Taiwan", "shape": "dot", "title": "# of papers: 2297.0"}, {"color": "#dd4b39", "id": "Greece", "label": "Greece", "shape": "dot", "title": "# of papers: 1630.0"}, {"color": "#dd4b39", "id": "Russian Federation", "label": "Russian Federation", "shape": "dot", "title": "# of papers: 1564.0"}, {"color": "#dd4b39", "id": "Poland", "label": "Poland", "shape": "dot", "title": "# of papers: 1493.0"}, {"color": "#dd4b39", "id": "Ireland", "label": "Ireland", "shape": "dot", "title": "# of papers: 1442.0"}, {"color": "#dd4b39", "id": "Czech Republic", "label": "Czech Republic", "shape": "dot", "title": "# of papers: 1416.0"}, {"color": "#dd4b39", "id": "Portugal", "label": "Portugal", "shape": "dot", "title": "# of papers: 1382.0"}, {"color": "#dd4b39", "id": "Norway", "label": "Norway", "shape": "dot", "title": "# of papers: 1312.9999999999998"}, {"color": "#dd4b39", "id": "Turkey", "label": "Turkey", "shape": "dot", "title": "# of papers: 931.0"}, {"color": "#dd4b39", "id": "New Zealand", "label": "New Zealand", "shape": "dot", "title": "# of papers: 911.0"}, {"color": "#dd4b39", "id": "Saudi Arabia", "label": "Saudi Arabia", "shape": "dot", "title": "# of papers: 909.0"}, {"color": "#dd4b39", "id": "Malaysia", "label": "Malaysia", "shape": "dot", "title": "# of papers: 892.0000000000001"}, {"color": "#dd4b39", "id": "United Arab Emirates", "label": "United Arab Emirates", "shape": "dot", "title": "# of papers: 754.0"}, {"color": "#dd4b39", "id": "Romania", "label": "Romania", "shape": "dot", "title": "# of papers: 731.0"}, {"color": "#dd4b39", "id": "Thailand", "label": "Thailand", "shape": "dot", "title": "# of papers: 697.0"}, {"color": "#dd4b39", "id": "Iran", "label": "Iran", "shape": "dot", "title": "# of papers: 610.0"}, {"color": "#dd4b39", "id": "Chile", "label": "Chile", "shape": "dot", "title": "# of papers: 592.0"}, {"color": "#dd4b39", "id": "Mexico", "label": "Mexico", "shape": "dot", "title": "# of papers: 577.0"}, {"color": "#dd4b39", "id": "Hungary", "label": "Hungary", "shape": "dot", "title": "# of papers: 570.0"}, {"color": "#dd4b39", "id": "Indonesia", "label": "Indonesia", "shape": "dot", "title": "# of papers: 522.0"}, {"color": "#dd4b39", "id": "Qatar", "label": "Qatar", "shape": "dot", "title": "# of papers: 501.0"}, {"color": "#dd4b39", "id": "Luxembourg", "label": "Luxembourg", "shape": "dot", "title": "# of papers: 459.0"}, {"color": "#dd4b39", "id": "Tunisia", "label": "Tunisia", "shape": "dot", "title": "# of papers: 445.0"}, {"color": "#dd4b39", "id": "Pakistan", "label": "Pakistan", "shape": "dot", "title": "# of papers: 404.0"}, {"color": "#dd4b39", "id": "Macao", "label": "Macao", "shape": "dot", "title": "# of papers: 319.0"}, {"color": "#dd4b39", "id": "South Africa", "label": "South Africa", "shape": "dot", "title": "# of papers: 315.0"}, {"color": "#dd4b39", "id": "Argentina", "label": "Argentina", "shape": "dot", "title": "# of papers: 308.0"}, {"color": "#dd4b39", "id": "Egypt", "label": "Egypt", "shape": "dot", "title": "# of papers: 292.0"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "color": "#55CBCD", "from": "China", "title": 0.5079903147699758, "to": "Hong Kong", "width": 0.5079903147699758}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.39214081047891935, "to": "Israel", "width": 0.39214081047891935}, {"arrows": "to", "color": "#55CBCD", "from": "China", "title": 0.35521177530790027, "to": "Singapore", "width": 0.35521177530790027}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.30583058305830585, "to": "Saudi Arabia", "width": 0.30583058305830585}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.2880011135857461, "to": "Switzerland", "width": 0.2880011135857461}, {"arrows": "to", "color": "#55CBCD", "from": "China", "title": 0.2874604847207587, "to": "Australia", "width": 0.2874604847207587}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.28512480551985386, "to": "Canada", "width": 0.28512480551985386}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.2692701227830832, "to": "India", "width": 0.2692701227830832}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.22889756683688797, "to": "Singapore", "width": 0.22889756683688797}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.22191283292978206, "to": "Hong Kong", "width": 0.22191283292978206}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.22005856515373354, "to": "United Kingdom", "width": 0.22005856515373354}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.21107865637387857, "to": "China", "width": 0.21107865637387857}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.20875040361640299, "to": "South Korea", "width": 0.20875040361640299}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.20766216804527643, "to": "Taiwan", "width": 0.20766216804527643}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.19817184643510058, "to": "Denmark", "width": 0.19817184643510058}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.18850631657171169, "to": "Spain", "width": 0.18850631657171169}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.18773006134969328, "to": "Greece", "width": 0.18773006134969328}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.18460111317254177, "to": "Sweden", "width": 0.18460111317254177}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.1824693685202639, "to": "Netherlands", "width": 0.1824693685202639}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.17882953096216525, "to": "Italy", "width": 0.17882953096216525}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.17240526367863857, "to": "Germany", "width": 0.17240526367863857}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.17184801381692574, "to": "Finland", "width": 0.17184801381692574}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.17154899894625922, "to": "Australia", "width": 0.17154899894625922}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.16824849007765313, "to": "Austria", "width": 0.16824849007765313}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.16751918158567777, "to": "France", "width": 0.16751918158567777}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.1651959054006354, "to": "Brazil", "width": 0.1651959054006354}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.15845213849287168, "to": "Belgium", "width": 0.15845213849287168}, {"arrows": "to", "color": "#55CBCD", "from": "Germany", "title": 0.1561691113028473, "to": "Austria", "width": 0.1561691113028473}, {"arrows": "to", "color": "#55CBCD", "from": "United States", "title": 0.12817316409791477, "to": "Japan", "width": 0.12817316409791477}, {"arrows": "to", "color": "#55CBCD", "from": "Germany", "title": 0.12535344015080113, "to": "Netherlands", "width": 0.12535344015080113}, {"arrows": "to", "color": "#55CBCD", "from": "Germany", "title": 0.12277282850779511, "to": "Switzerland", "width": 0.12277282850779511}, {"arrows": "to", "color": "#55CBCD", "from": "Germany", "title": 0.12175502742230349, "to": "Denmark", "width": 0.12175502742230349}, {"arrows": "to", "color": "#55CBCD", "from": "United Kingdom", "title": 0.11846435100548446, "to": "Denmark", "width": 0.11846435100548446}, {"arrows": "to", "color": "#55CBCD", "from": "United Kingdom", "title": 0.11083883129123469, "to": "Netherlands", "width": 0.11083883129123469}, {"arrows": "to", "color": "#55CBCD", "from": "United Kingdom", "title": 0.10853432282003711, "to": "Sweden", "width": 0.10853432282003711}, {"arrows": "to", "color": "#55CBCD", "from": "United Kingdom", "title": 0.09807305148116191, "to": "Austria", "width": 0.09807305148116191}, {"arrows": "to", "color": "#55CBCD", "from": "United Kingdom", "title": 0.09437701263314344, "to": "Spain", "width": 0.09437701263314344}, {"arrows": "to", "color": "#55CBCD", "from": "United Kingdom", "title": 0.09309905058806858, "to": "Italy", "width": 0.09309905058806858}, {"arrows": "to", "color": "#55CBCD", "from": "Germany", "title": 0.09214594928880643, "to": "Sweden", "width": 0.09214594928880643}, {"arrows": "to", "color": "#55CBCD", "from": "China", "title": 0.08428600419400663, "to": "Canada", "width": 0.08428600419400663}, {"arrows": "to", "color": "#55CBCD", "from": "United Kingdom", "title": 0.0801781737193764, "to": "Switzerland", "width": 0.0801781737193764}, {"arrows": "to", "color": "#55CBCD", "from": "Germany", "title": 0.07901907356948229, "to": "Spain", "width": 0.07901907356948229}, {"arrows": "to", "color": "#55CBCD", "from": "United Kingdom", "title": 0.07870782625902839, "to": "Germany", "width": 0.07870782625902839}, {"arrows": "to", "color": "#55CBCD", "from": "China", "title": 0.07867252318204003, "to": "United Kingdom", "width": 0.07867252318204003}, {"arrows": "to", "color": "#55CBCD", "from": "France", "title": 0.07678969531830568, "to": "Spain", "width": 0.07678969531830568}, {"arrows": "to", "color": "#55CBCD", "from": "France", "title": 0.0763780643332861, "to": "Italy", "width": 0.0763780643332861}, {"arrows": "to", "color": "#55CBCD", "from": "United Kingdom", "title": 0.07464833759590793, "to": "France", "width": 0.07464833759590793}, {"arrows": "to", "color": "#55CBCD", "from": "Hong Kong", "title": 0.07314508861519976, "to": "Singapore", "width": 0.07314508861519976}, {"arrows": "to", "color": "#55CBCD", "from": "China", "title": 0.07094288304623753, "to": "Japan", "width": 0.07094288304623753}, {"arrows": "to", "color": "#55CBCD", "from": "United Kingdom", "title": 0.06880927291886196, "to": "Australia", "width": 0.06880927291886196}, {"arrows": "to", "color": "#55CBCD", "from": "Germany", "title": 0.06830097775258609, "to": "Italy", "width": 0.06830097775258609}, {"arrows": "to", "color": "#55CBCD", "from": "Germany", "title": 0.06369884910485935, "to": "France", "width": 0.06369884910485935}, {"arrows": "to", "color": "#55CBCD", "from": "Australia", "title": 0.0629318113547612, "to": "Singapore", "width": 0.0629318113547612}, {"arrows": "to", "color": "#55CBCD", "from": "Australia", "title": 0.05690072639225181, "to": "Hong Kong", "width": 0.05690072639225181}, {"arrows": "to", "color": "#55CBCD", "from": "United Kingdom", "title": 0.05492795778935263, "to": "Canada", "width": 0.05492795778935263}, {"arrows": "to", "color": "#55CBCD", "from": "China", "title": 0.05289532293986637, "to": "Switzerland", "width": 0.05289532293986637}, {"arrows": "to", "color": "#55CBCD", "from": "Germany", "title": 0.05081855388813097, "to": "India", "width": 0.05081855388813097}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
