@@ -35,18 +35,33 @@ for i, row in enumerate(data.iloc[start_index:].itertuples(), start_index):
 
     q = f"REF({e})"
     try:
-        s = ScopusSearch(q, verbose=False, download=True)
-        ref_by = set(s.get_eids())
-        in_origin = list(origin_eids_set.intersection(ref_by))
-        in_origin_n = len(in_origin)
-        in_origin = ';'.join(in_origin)
-        not_origin = ref_by - origin_eids_set
-        not_origin = list(not_origin)
-        not_origin_n = len(not_origin)
-        not_origin = ';'.join(not_origin)
-        new_row = [e, in_origin, in_origin_n, not_origin, not_origin_n]
-        df = df.append(pd.Series(new_row, index=df.columns), ignore_index=True)
-        print(f"# : {i}, Eid : {e}, Done.")
+        try:
+            s = ScopusSearch(q, verbose=False, download=True)
+            ref_by = set(s.get_eids())
+            in_origin = list(origin_eids_set.intersection(ref_by))
+            in_origin_n = len(in_origin)
+            in_origin = ';'.join(in_origin)
+            not_origin = ref_by - origin_eids_set
+            not_origin = list(not_origin)
+            not_origin_n = len(not_origin)
+            not_origin = ';'.join(not_origin)
+            new_row = [e, in_origin, in_origin_n, not_origin, not_origin_n]
+            df = df.append(pd.Series(new_row, index=df.columns), ignore_index=True)
+            print(f"# : {i}, Eid : {e}, Done.")
+        except:
+            q = f"REF( {e} )"
+            s = ScopusSearch(q, verbose=False, download=True)
+            ref_by = set(s.get_eids())
+            in_origin = list(origin_eids_set.intersection(ref_by))
+            in_origin_n = len(in_origin)
+            in_origin = ';'.join(in_origin)
+            not_origin = ref_by - origin_eids_set
+            not_origin = list(not_origin)
+            not_origin_n = len(not_origin)
+            not_origin = ';'.join(not_origin)
+            new_row = [e, in_origin, in_origin_n, not_origin, not_origin_n]
+            df = df.append(pd.Series(new_row, index=df.columns), ignore_index=True)
+            print(f"# : {i}, Eid : {e}, Done.")
     except Exception as ex:
         print(f"{e} Failed: {str(ex)}")
         failed_eids.append(e)
